@@ -7,5 +7,4 @@ class Listing
     @@all
   end
 
-
 end
