@@ -1,8 +1,10 @@
-class ListingScraper
+class Scraper
 
 
-  def scraper
-
+  
+  
+  def scrape_description
+  end 
 
 end 
 
