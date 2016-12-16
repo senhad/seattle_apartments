@@ -17,13 +17,4 @@ class Scraper
     Listing.all
   end
 
-def self.add_details
-      Listing.all.map do |listing|
-        desc = Nokogiri::HTML(open(listing.url))
-        listing.description = desc.css('print-information print-qrcode-container').text
-    end
-      Listing.all
-  end
-
-
 end
