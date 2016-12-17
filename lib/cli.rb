@@ -12,7 +12,7 @@ class Cli
   def menu
     input = ""
     while input != "exit"
-      puts "Enter the number of the listing you would additional details for, type list to see the list again or type exit"
+      puts "ENTER THE NUMBER OF THE LISTING YOU WOULD ADDITIONAL DETAILS FOR, TYPE LIST TO SEE THE LIST AGAIN OR TYPE EXIT:"
       input = gets.strip.downcase
       case input
       when "exit"
