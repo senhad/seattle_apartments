@@ -20,9 +20,7 @@ class Cli
       when "list"
         list_listings
       else
-       href = Listing.all[input.to_i - 1].url
-        doc = Nokogiri::HTML(open(href))
-        Listing.all[input.to_i - 1].description = doc.css('#postingbody').text.gsub(/QR Code Link to This Post/, '').strip
+        Scraper.scrape_additional_details(input)
         puts "---------ADDITIONAL DETAILS---------"
         puts Listing.all[input.to_i - 1].title
         puts "PRICE: #{Listing.all[input.to_i - 1].price}"
