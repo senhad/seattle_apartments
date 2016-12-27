@@ -1,8 +1,9 @@
 class Cli
 
-  def initialize
+
+  def call
     Scraper.scrape_listings
-    puts "This is your preview of latest apartment listings in Seattle"
+    puts "This is your preview of the latest apartment listings in Seattle"
     sleep(1)
     list_listings
     menu
@@ -20,12 +21,7 @@ class Cli
       when "list"
         list_listings
       else
-        Scraper.scrape_additional_details(input)
-        puts "---------ADDITIONAL DETAILS---------"
-        puts Listing.all[input.to_i - 1].title
-        puts "PRICE: #{Listing.all[input.to_i - 1].price}"
-        puts "LOCATION: #{Listing.all[input.to_i - 1].location}"
-        puts "DESCRIPTION: #{Listing.all[input.to_i - 1].description}"
+        additional_details(input)
         end
       end
     end
@@ -39,6 +35,16 @@ class Cli
 
   def goodbye
     puts "Goodbye, see you next time!"
+  end
+
+  def additional_details(input)
+    Scraper.scrape_additional_details(input)
+    listing = Listing.find_by_number(input.to_i - 1)
+    puts "---------ADDITIONAL DETAILS---------"
+    puts listing.title
+    puts "PRICE: #{listing.price}"
+    puts "LOCATION: #{listing.location}"
+    puts "DESCRIPTION: #{listing.description}"
   end
 
 end
